@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+	<link rel="stylesheet" href="../css/style.css">
+	<script type="text/javascript" src="../js/javascript.js"></script>
+</head>
+
+<body>
+		<h1>
+			<span class="canal">CANAL </span>
+			<span class="abilio">ABILIO </span>
+			<span class="diniz">DINIZ</span>
+		</h1>
+		<div id="ytlogoblock"></div>
+		<div id="player"></div>
+		<div id="voltarBTN">
+			<img src="../images/BTNvoltar.png" onclick="voltar()"/>
+		</div>
+		<script src="http://www.youtube.com/player_api"></script>
+
+		<script>
+
+			// create youtube player
+			var player;
+			function onYouTubePlayerAPIReady() {
+				player = new YT.Player('player', {
+				  height: '630',
+				  width: '1122',
+				  videoId: 'K-a05cv5C80',
+				  playerVars: {rel: 0, modestbranding: 1, showinfo: 0, controls: 0},
+				  events: {
+					'onReady': onPlayerReady,
+					'onStateChange': onPlayerStateChange
+				  }
+				});
+			}
+
+			// autoplay video
+			function onPlayerReady(event) {
+				event.target.playVideo();
+				pauseTimer();
+			}
+
+			// when video ends
+			function onPlayerStateChange(event) {        
+				if(event.data === 0) {            
+					window.location.href='canal.html';
+				}
+			}
+		</script>
+	
+</body>
+</html>
+
+
+
+

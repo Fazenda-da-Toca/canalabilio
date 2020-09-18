@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<link  rel="stylesheet" href="../css/mylist-player.css">
+	<style type="text/css">
+        .wrapper {
+			position: fixed;
+			width: 1330px;
+			/*height: 630px;*/
+			left: 280px;
+			top: 100px;
+        }
+        pre {
+            padding: 6px;
+            background: #e6f2ff;
+        }
+    </style>
+	<!-- MyList PLAYER SETTINGS -->
+    <script type="text/javascript">
+		var retrievedData = localStorage.getItem("playListSTG");
+		var playListConv = JSON.parse(retrievedData);
+		var playListID = [playListConv]; // replace with your desired youtube playlist ID
+        
+		var apiKey = "AIzaSyDCMJxoa5M0Z74oyCDlotZ8VJ8DadOux00"; // this default YouTube API key will work but you should change it to your own
+        var autoPlayNext = 1; // auto play next video in list when current ends? 0 for no. 1 for yes.
+        var showPlayerControls = 0; // display YouTube video player controls? 0 for no. 1 for yes.
+        var showVideoInfo = 0; // display video title on youtube player? 0 for no. 1 for yes.
+        var showRelatedVideos = 0; // display related videos after video ends? 0 for no. 1 for yes.
+        var showTitlesInList = 1; // display video titles under each thumbnail in playlist? 0 for no. 1 for yes.
+    </script>
+	
+	<script src="../js/jquery.min.1.11.3.js"></script>
+	<script src="../js/mylist-player.js"></script>
+	<!-- <script type="text/javascript" src="../js/javascript.js"></script> -->
+</head>
+
+<body>
+        <script type="text/javascript">
+            function voltar(){
+                window.history.back();
+            }
+        </script>
+		<h1>
+			<span class="canal">CANAL </span>
+			<span class="abilio">ABILIO </span>
+			<span class="diniz">DINIZ</span>
+		</h1>
+        <div id="ytlogoplaylistblock"></div>
+		<div class="wrapper">
+
+        
+
+        <!-- MYLIST PLAYER HTML START -->
+        <div id="player-container1" class="player-container">
+            <!-- THE YOUTUBE PLAYER -->
+            <div class="mlvp-container">
+                <div id="vid_frame1"></div>
+            </div>
+            <!-- LEFT AND RIGHT ARROWS -->
+            <div class="mlvp-arrows">
+                <div class="mlvp-arrow-left"><i class="demo-icon icon-left-open">&#xe800;</i></div>
+                <div class="mlvp-arrow-right"><i class="demo-icon icon-right-open">&#xe801;</i></div>
+            </div>
+            <!-- THE PLAYLIST -->
+            <div class="mlvp-list-container">
+                <div class="mlvp-list noselect"></div>
+            </div>
+        </div>
+		<div id="voltarBTN">
+			<img src="../images/BTNvoltar.png" onclick="voltar()"/>
+		</div>
+		</div>
+
+</body>
+</html>

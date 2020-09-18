@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<link rel="stylesheet" href="../css/style.css">
+	<script type="text/javascript" src="../js/javascript.js"></script>
+</head>
+
+<body>
+	<div>
+		<h1>
+			<span class="canal">CANAL </span>
+			<span class="abilio">ABILIO </span>
+			<span class="diniz">DINIZ</span>
+		</h1>
+		<div id="menuplaylist">
+			<div class="thumbplaylist">
+				<div class="thumbmenu" onclick="location.href='bemvindos.html';">
+					<img src="../images/THB1.png"/>
+					<h2>Seja bem-vindo ao meu canal oficial!</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu" onclick="loadPlaylist('PLXt5glpQugduIK1aE49mGjkPMVFUhpVU-')">
+					<img src="../images/THB2.png"/>
+					<h2>Carreira por Abilio Diniz</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu" onclick="loadPlaylist('PLXt5glpQugdtRtfSeipOu5U7wOooGf6TJ')">
+					<img src="../images/THB3.png"/>
+					<h2>Empreendedorismo por Abilio Diniz</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu" onclick="loadPlaylist('PLXt5glpQugdupkLFIBBlCvrZInUgNjKCa')">
+					<img src="../images/THB4.png"/>
+					<h2>Abilio Diniz: Vida e Biografia</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu" onclick="loadPlaylist('PLXt5glpQugdsfiGJJYBe-Q3kAsI-PSHSl')">
+					<img src="../images/THB5.png"/>
+					<h2>Liderança por Abilio Diniz</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu" onclick="loadPlaylist('PLXt5glpQugds5GIEwr-VfMtrp7dT5nAW7')">
+					<img src="../images/THB6.png"/>
+					<h2>Abilio Diniz e Parceiros: Alimentação</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu" onclick="loadPlaylist('PLXt5glpQugdv-zWPkQRu_p5z-xDsfH1ob')">
+					<img src="../images/THB7.png"/>
+					<h2>Vídeos Abilio Diniz e parceiros: Atividade Física</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu">
+					<img src="../images/THB8.png" onclick="loadPlaylist('PLXt5glpQugduZ_Y5BCFh3gJatCfYf29f_')"/>
+					<h2>Vídeos Abilio Diniz e parceiros: Espiritualidade</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist" onclick="loadPlaylist('PLXt5glpQugdvodWm5NqvTl1vDO9QRZEjv')">
+				<div class="thumbmenu">
+					<img src="../images/THB9.png"/>
+					<h2>Vídeos em Inglês</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist" onclick="loadPlaylist('PLXt5glpQugdvfylJHUvslDmOCxwqxciXV')">
+				<div class="thumbmenu">
+					<img src="../images/THB10.png">
+					<h2>Vídeos em Francês</h2>			
+				</div>
+			</div>
+			<div class="thumbplaylist">
+				<div class="thumbmenu" >
+					 <img src="../images/THB11.png" onclick="location.href='all.html'"/>
+					<h2>Todos os vídeos</h2>			
+				</div>
+			</div>
+		</div>
+		<div id="voltarBTN">
+			<img src="../images/BTNvoltar.png" onclick="voltar()"/>
+		</div>
+	
+	</div>
+	<script type="text/javascript">
+		var playListSTG = [];
+	        function loadPlaylist(e){
+				playListSTG.push(e);
+				localStorage.setItem("playListSTG", JSON.stringify(e));
+				window.location.href='playlist.html';
+			}
+	</script>
+</body>
+</html>

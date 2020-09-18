@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/mylist-player.css">
+	<script src="../js/jquery.min.1.11.3.js"></script>
+	<script type="text/javascript" src="../js/javascript.js"></script>
+  <script type="text/javascript" src="../js/player.js"></script>
+    <script type="text/javascript">
+      pid = '';
+      $(document).ready(function(){
+        $.get(
+          "https://www.googleapis.com/youtube/v3/channels", {
+            part: 'contentDetails',
+            forUsername: 'videoAbilioDiniz',
+            key: 'AIzaSyDCMJxoa5M0Z74oyCDlotZ8VJ8DadOux00'
+          },
+        function(data){
+          $.each(data.items, function(i, item){
+            console.log(item);
+            pid = item.contentDetails.relatedPlaylists.uploads;
+            getVids(pid);
+          })
+        });
+
+      });
+      function getVids(pid, pageToken){
+        var data = {
+          part: 'snippet',
+          maxResults: 12,
+          playlistId: pid,
+          key: 'AIzaSyDCMJxoa5M0Z74oyCDlotZ8VJ8DadOux00'
+        }
+        
+        try{
+          if(pageToken){
+            data["pageToken"] = pageToken;
+          }
+        }catch(err){
+        }
+
+        $.get(
+          "https://www.googleapis.com/youtube/v3/playlistItems", data,
+          function(data){
+            var output;
+
+            $('#content').html("");
+            $.each(data.items, function(i, item){
+              console.log(item);
+              videoTitle = item.snippet.title;
+              rvideoID = item.snippet.resourceId.videoId;
+              vidThumburl = item.snippet.thumbnails.medium.url;
+              output = '<div class="thumball"><img src='+vidThumburl+' onclick=openVideo(\"'+rvideoID+'\") ><p class="videotitle">'+ videoTitle + '</div>';
+
+              //Append to results list
+              $('#content').append(output);
+
+            });
+            try{
+              if(data.prevPageToken){
+                $("#content").append('<i class="all-arrow-left" href="javascript:void(0);" onclick="javascript:getVids(pid, \'' + data.prevPageToken + '\');"><i class="demo-icon icon-left-open">&#xe800;</i>');
+              }
+            }catch(err){
+            }
+
+            try{
+              if(data.nextPageToken){
+                $("#content").append('<i class="all-arrow-right" href="javascript:void(0);" onclick="javascript:getVids(pid, \'' + data.nextPageToken + '\');"><i class="demo-icon icon-right-open">&#xe801;</i>');
+              }
+            }catch(err){
+            }
+          });
+      }
+    </script>
+  </head>
+  <body>
+	  <div id="playerfloat" onclick="hidePlayer()" style="visibility: hidden;">
+      <div id="voltarBTN">
+        <img src="../images/BTNvoltar.png"/>
+      </div>
+		  <div id="ytlogoblock"></div>
+		  <div id="player"></div>
+	  </div>
+	  <h1>
+		<span class="canal">CANAL </span>
+		<span class="abilio">ABILIO </span>
+		<span class="diniz">DINIZ</span>
+	  </h1>
+	  <div id="content"></div>
+		<div id="voltarBTN">
+			<img src="../images/BTNvoltar.png" onclick="voltar()"/>
+		</div>
+	<script src="http://www.youtube.com/player_api"></script>
+  </body>
+</html>
